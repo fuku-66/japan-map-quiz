@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>日本ぐるっと！地図クイズ</title>
+    <meta
+      name="description"
+      content="小学6年生向け。日本の地理を地図の旅で楽しく学べる3択クイズです。"
+    />
+    <meta property="og:title" content="日本ぐるっと！地図クイズ" />
+    <meta
+      property="og:description"
+      content="小学6年生向け。日本の地理を地図の旅で楽しく学べる3択クイズです。"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://fuku-66.github.io/japan-map-quiz/"
+    />
+    <meta
+      property="og:image"
+      content="https://fuku-66.github.io/japan-map-quiz/og.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="quiz-shell">
+      <div
+        id="map"
+        class="map-canvas"
+        aria-label="日本地図"
+        role="application"
+      ></div>
+
+      <div class="map-brand" aria-label="日本ぐるっと地図クイズ">
+        <div class="brand-mark" aria-hidden="true">🗾</div>
+        <div class="brand-copy">
+          <strong>日本ぐるっと！</strong>
+          <span>地図クイズ</span>
+        </div>
+      </div>
+
+      <section
+        id="quiz-panel"
+        class="quiz-panel panel-center"
+        aria-live="polite"
+      >
+        <div class="panel-topline"></div>
+        <div id="panel-content" class="panel-content"></div>
+      </section>
+    </main>
+
+    <script src="./leaflet.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
