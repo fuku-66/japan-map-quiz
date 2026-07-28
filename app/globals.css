@@ -147,9 +147,18 @@ button {
   transform: translate(50%, -50%);
 }
 
+.quiz-panel.panel-wide {
+  width: min(720px, calc(100% - 44px));
+}
+
 .panel-topline {
   height: 7px;
-  background: linear-gradient(90deg, var(--blue), #2e9bd3 55%, #67c5bc);
+  background: linear-gradient(
+    90deg,
+    var(--course-accent, var(--blue)),
+    #2e9bd3 55%,
+    #67c5bc
+  );
 }
 
 .panel-content {
@@ -215,6 +224,123 @@ button {
   line-height: 1.8;
 }
 
+.course-lead {
+  margin-bottom: 18px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.course-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  min-height: 104px;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 2px solid color-mix(in srgb, var(--card-accent) 20%, white);
+  border-radius: 17px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--card-accent) 8%, white),
+      white 58%
+    );
+  color: var(--navy);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.course-card:hover {
+  border-color: color-mix(in srgb, var(--card-accent) 52%, white);
+  box-shadow: 0 10px 24px rgba(16, 42, 67, 0.12);
+  transform: translateY(-2px);
+}
+
+.course-card:focus-visible {
+  outline: 4px solid rgba(23, 105, 170, 0.25);
+  outline-offset: 3px;
+}
+
+.course-icon {
+  display: grid;
+  width: 47px;
+  height: 47px;
+  place-items: center;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card-accent) 14%, white);
+  font-size: 25px;
+}
+
+.course-copy {
+  display: grid;
+  gap: 5px;
+}
+
+.course-copy strong {
+  color: var(--card-accent);
+  font-size: 18px;
+}
+
+.course-copy span {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.course-count {
+  align-self: start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: white;
+  color: var(--card-accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.random-note {
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.course-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.text-button {
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.active-course {
+  overflow: hidden;
+  color: var(--course-accent);
+  font-size: 13px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .how-to {
   display: grid;
   gap: 12px;
@@ -249,6 +375,7 @@ button {
 .primary-button,
 .next-button,
 .retry-button,
+.secondary-button,
 .answer-button {
   width: 100%;
   border: 0;
@@ -261,7 +388,8 @@ button {
 
 .primary-button,
 .next-button,
-.retry-button {
+.retry-button,
+.secondary-button {
   min-height: 54px;
   border-radius: 14px;
   color: white;
@@ -280,9 +408,16 @@ button {
   box-shadow: 0 10px 20px rgba(229, 82, 82, 0.2);
 }
 
+.secondary-button {
+  border: 2px solid var(--line);
+  background: white;
+  color: var(--navy);
+}
+
 .primary-button:hover,
 .next-button:hover,
 .retry-button:hover,
+.secondary-button:hover,
 .answer-button:hover {
   transform: translateY(-2px);
 }
@@ -290,6 +425,7 @@ button {
 .primary-button:focus-visible,
 .next-button:focus-visible,
 .retry-button:focus-visible,
+.secondary-button:focus-visible,
 .answer-button:focus-visible {
   outline: 4px solid rgba(23, 105, 170, 0.25);
   outline-offset: 3px;
@@ -317,7 +453,11 @@ button {
 .progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--blue), #4ba9d6);
+  background: linear-gradient(
+    90deg,
+    var(--course-accent, var(--blue)),
+    #4ba9d6
+  );
   transition: width 350ms ease;
 }
 
@@ -361,7 +501,7 @@ button {
   height: 36px;
   place-items: center;
   border-radius: 11px;
-  background: var(--navy);
+  background: var(--course-accent, var(--navy));
   color: white;
   font-size: 15px;
 }
@@ -459,6 +599,11 @@ button {
   font-weight: 900;
 }
 
+.goal-actions {
+  display: grid;
+  gap: 11px;
+}
+
 .answer-marker {
   background: transparent;
   border: 0;
@@ -544,6 +689,10 @@ button {
     transform: none;
   }
 
+  .quiz-panel.panel-wide {
+    max-height: 76svh;
+  }
+
   .panel-content {
     padding: 20px;
   }
@@ -560,6 +709,15 @@ button {
     gap: 9px;
     margin-bottom: 18px;
     padding: 13px;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-card {
+    min-height: 88px;
+    padding: 12px;
   }
 
   .answer-button {

@@ -4,7 +4,7 @@ import "./globals.css";
 
 const title = "日本ぐるっと！地図クイズ";
 const description =
-  "小学6年生向け。日本の地理を地図の旅で楽しく学べる3択クイズです。";
+  "小学6年生向け。日本の地理・観光名所・県庁所在地・お土産を地図で楽しく学べる全40問の3択クイズです。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
