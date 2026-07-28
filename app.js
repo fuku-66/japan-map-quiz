@@ -271,7 +271,7 @@ content.addEventListener("click", (event) => {
 window.addEventListener("resize", () => map.invalidateSize());
 
 content.innerHTML = '<p class="hero-lead">クイズを準備しています…</p>';
-fetch("./quiz-data.json")
+fetch("./quiz-data.json?v=2")
   .then((response) => {
     if (!response.ok) throw new Error("Quiz data could not be loaded");
     return response.json();
