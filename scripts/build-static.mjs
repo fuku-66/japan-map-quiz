@@ -18,8 +18,8 @@ const questionCount = courses.reduce(
   0,
 );
 
-if (courses.length !== 4 || questionCount !== 40) {
-  throw new Error(`Expected 4 courses and 40 questions, got ${courses.length} and ${questionCount}`);
+if (!Array.isArray(courses) || courses.length === 0 || questionCount === 0) {
+  throw new Error("At least one course with questions is required");
 }
 
 for (const course of courses) {

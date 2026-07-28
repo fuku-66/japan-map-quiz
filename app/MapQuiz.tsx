@@ -148,6 +148,10 @@ export default function MapQuiz() {
   const totalQuestions = questions.length || selectedCourse?.questions.length || 0;
   const progress =
     totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0;
+  const totalAvailableQuestions = COURSES.reduce(
+    (total, course) => total + course.questions.length,
+    0,
+  );
 
   const startCourse = (course: QuizCourse) => {
     setSelectedCourse(course);
@@ -219,7 +223,9 @@ export default function MapQuiz() {
             <>
               <div className="eyebrow-row">
                 <span className="grade-pill">小学6年生向け</span>
-                <span className="score-pill">4コース・全40問</span>
+                <span className="score-pill">
+                  {COURSES.length}コース・全{totalAvailableQuestions}問
+                </span>
               </div>
               <h1 className="hero-title">
                 <span>好きなテーマで日本を旅しよう</span>
@@ -228,7 +234,7 @@ export default function MapQuiz() {
                 地図クイズ
               </h1>
               <p className="hero-lead course-lead">
-                コースを選ぶと10問をランダムに出題。答えの場所まで地図がひとっ飛びします。
+                コースを選ぶと問題をランダム順に出題。答えの場所まで地図がひとっ飛びします。
               </p>
               <div className="course-grid" aria-label="クイズコース">
                 {COURSES.map((course) => (

@@ -130,7 +130,7 @@ function render() {
         日本ぐるっと！<br>地図クイズ
       </h1>
       <p class="hero-lead course-lead">
-        コースを選ぶと10問をランダムに出題。答えの場所まで地図がひとっ飛びします。
+        コースを選ぶと問題をランダム順に出題。答えの場所まで地図がひとっ飛びします。
       </p>
       <div class="course-grid" aria-label="クイズコース">
         ${courses

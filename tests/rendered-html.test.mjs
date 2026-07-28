@@ -4,21 +4,22 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("quiz data contains four expandable courses and forty valid questions", async () => {
+test("quiz data contains expandable courses and valid questions", async () => {
   const raw = await readFile(new URL("public/quiz-data.json", root), "utf8");
   const courses = JSON.parse(raw);
 
-  assert.equal(courses.length, 4);
+  assert.ok(courses.length >= 4);
   assert.equal(new Set(courses.map((course) => course.id)).size, courses.length);
-  assert.equal(
-    courses.reduce((total, course) => total + course.questions.length, 0),
-    40,
+  const totalQuestions = courses.reduce(
+    (total, course) => total + course.questions.length,
+    0,
   );
+  assert.ok(totalQuestions >= 40);
 
   for (const course of courses) {
     assert.ok(course.id);
     assert.ok(course.title);
-    assert.equal(course.questions.length, 10);
+    assert.ok(course.questions.length > 0);
 
     for (const question of course.questions) {
       assert.equal(question.choices.length, 3);
