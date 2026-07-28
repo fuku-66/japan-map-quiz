@@ -70,14 +70,11 @@ function JapanMap({
         maxZoom: 18,
       });
 
-      L.tileLayer(
-        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        {
-          maxZoom: 18,
-          attribution:
-            "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
-        },
-      ).addTo(localMap);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(localMap);
 
       mapRef.current = localMap;
       window.setTimeout(() => localMap?.invalidateSize(), 80);
@@ -129,7 +126,7 @@ function JapanMap({
     <div
       ref={containerRef}
       className="map-canvas"
-      aria-label="日本の航空写真地図"
+      aria-label="日本地図"
       role="application"
     />
   );

@@ -34,7 +34,7 @@ test("quiz data contains expandable courses and valid questions", async () => {
   }
 });
 
-test("static build uses shared data, randomized order, and border-free imagery", async () => {
+test("static build uses shared data, randomized order, and OpenStreetMap", async () => {
   const [app, source, publicData, staticData] = await Promise.all([
     readFile(new URL("docs/app.js", root), "utf8"),
     readFile(new URL("app/MapQuiz.tsx", root), "utf8"),
@@ -45,8 +45,8 @@ test("static build uses shared data, randomized order, and border-free imagery",
   assert.equal(staticData, publicData);
   assert.match(app, /shuffleQuestions/);
   assert.match(source, /shuffleQuestions/);
-  assert.match(app, /World_Imagery/);
-  assert.match(source, /World_Imagery/);
-  assert.doesNotMatch(app, /tile\.openstreetmap\.org/);
-  assert.doesNotMatch(source, /tile\.openstreetmap\.org/);
+  assert.match(app, /tile\.openstreetmap\.org/);
+  assert.match(source, /tile\.openstreetmap\.org/);
+  assert.doesNotMatch(app, /World_Imagery/);
+  assert.doesNotMatch(source, /World_Imagery/);
 });
